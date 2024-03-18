@@ -1,0 +1,48 @@
+expr_id: train_low_level_3000_examples_x0_pred
+# general params
+pretrained_model_name_or_path: stabilityai/stable-diffusion-xl-base-1.0
+pretrained_vae_model_name_or_path: madebyollin/sdxl-vae-fp16-fix
+caption_column: text   
+resolution: 1024 
+random_flip: True   
+checkpointing_steps: 500   
+
+# dataset size
+max_train_samples: 3000
+
+# optimization params
+learning_rate: 1e-04 
+lr_scheduler: constant 
+lr_warmup_steps: 0   
+mixed_precision: fp16
+validation_prompt: "face" 
+seed: 42   
+
+# Dataset params
+train_data_dir: "$FFHQ_RAW_DATA"
+train_batch_size: 2
+num_train_epochs: 4000
+gradient_accumulation_steps: 1
+
+# logging
+min_validation_steps: 500
+skip_first_epoch: False
+report_to: wandb
+output_dir: "$BASE_PATH/test_x0_pred/"  
+
+# ambient params
+noisy_ambient: True
+timestep_nature: 100
+x0_pred: True
+
+# consistency params
+consistency_coeff: 0.0
+num_consistency_steps: 1
+max_steps_diff: 100
+run_consistency_everywhere: True
+
+# FID params
+track_fid: True
+fid_ref_path: "$FFHQ_REF_PATH"
+num_images_for_fid: 1024
+

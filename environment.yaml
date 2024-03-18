@@ -1,0 +1,24 @@
+name: ambient_tweedie
+channels:
+  - pytorch
+  - nvidia
+  - nvidia/label/cuda-12.1.0
+dependencies:
+  - pytorch
+  - torchvision
+  - pytorch-cuda=12.1
+  - cuda-toolkit
+  - pip:
+    - invisible_watermark
+    - transformers 
+    - accelerate 
+    - safetensors
+    - datasets
+    - peft
+    - wandb
+    - imageio
+    - s3fs
+    - seaborn
+    - plotly
+    - git+https://github.com/giannisdaras/ambient_utils.git
+    - git+https://github.com/huggingface/diffusers.git
